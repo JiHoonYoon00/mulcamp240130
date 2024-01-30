@@ -3,10 +3,15 @@
 import streamlit as st
 import seaborn as sns
 
+@st.cache_data
+def load_data():
+    df = iris = sns.load_dataset("iris")
+    return df
 
 def main():
     st.title("Hello")
-    iris = sns.load_dataset("iris")
+    iris = load_data()
+    st.table(iris)    
 
 if __name__ == "__main__":
     main()
